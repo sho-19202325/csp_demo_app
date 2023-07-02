@@ -38,6 +38,9 @@ const IndexPosts = () => {
   }
 
   useEffect(() => {
+    // アクセストークンをローカルストレージに保存
+    localStorage.setItem('accessToken', "アクセストークンの中身")
+
     fetchPosts()
   }, [])
 
@@ -63,7 +66,7 @@ const IndexPosts = () => {
       {posts.map((post) => (
         <div key={post.id}>
           <h2>{post.title}</h2>
-          <p>{post.content}</p>
+          <div dangerouslySetInnerHTML={{ __html: post.content }} />
         </div>
       ))}
     </div>
